@@ -1,0 +1,10 @@
+petting_zoo.png animals people
+house.jpg buildings
+hiking.png people landscapes flowers
+aquarium.png buildings animals
+classroom.jpg people
+desert_dunes.png landscapes 
+forest.png flowers landscapes
+hospital.jpg buildings people
+
+
