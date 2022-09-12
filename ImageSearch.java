@@ -16,23 +16,23 @@ public class ImageSearch {
         
         HashMap<String, List<String>> images = new HashMap<>();
        
-        // Read file into hashmap
+        // READ FILE INTO HASHMAP
         try{
             Scanner inFile = new Scanner(new File("image_info.txt"));
             
             while(inFile.hasNextLine()){ 
                 String fileLine = inFile.nextLine();
-                Scanner lineReader = new Scanner(fileLine); //read each line separately
+                Scanner lineReader = new Scanner(fileLine); //READ EACH LINE SEPARATELY
                 
                 while(lineReader.hasNext()){        
-                String key = lineReader.next(); //read first word into key variable
+                String key = lineReader.next(); //READ FIRST WORD INTO "key" VARIABLE
                 List<String> values = new ArrayList<>();
                 
-                    while(lineReader.hasNext()){ //read the rest of the words into a list                             
+                    while(lineReader.hasNext()){ //READ THE REST OF THE LINE INTO A LIST                         
                         values.add(lineReader.next());
                     }
                 
-                images.put(key, values); //add the new key and its values to the map
+                images.put(key, values); //ADD THE NEW KEY AND ITS CORRESPONDING VALUES TO THE MAP
 
                 }
                  
@@ -48,7 +48,7 @@ public class ImageSearch {
         }
         
                 
-        // User interaction and search
+        // USER INTERACTION AND SEARCH
         try{    
             Scanner keyboard = new Scanner(System.in);
                      
@@ -62,7 +62,7 @@ public class ImageSearch {
                 String input = keyboard.nextLine();
                 Scanner inputReader = new Scanner(input);
                 
-                while(inputReader.hasNext()){ //Read each word into separate strings
+                while(inputReader.hasNext()){ //Read EACH WORD AS A SEPARATE STRING
                     userChoice1 = inputReader.next().toLowerCase();
                     
                     while(inputReader.hasNext()){
@@ -78,17 +78,17 @@ public class ImageSearch {
                
                for(Map.Entry<String, List<String>> entry: images.entrySet()){
                    
-                   if(userChoice2.equals(" ")){ //One search term
+                   if(userChoice2.equals(" ")){ //USER ENTERS ONE SEARCH TERMS
                         if(entry.getValue().contains(userChoice1)){
                         System.out.println("\t\t" + entry.getKey());
                         }  
                    }
-                   else if(conj.equalsIgnoreCase("and")){ //Containing both terms
+                   else if(conj.equalsIgnoreCase("and")){ //MULTIPLE SEARCH TERMS CONTAINING "and", RETURN ALL IMAGES W/ BOTH ELEMENTS
                        if(entry.getValue().contains(userChoice1)&&(entry.getValue().contains(userChoice2))){
                         System.out.println("\t\t" + entry.getKey());
                         }  
                    }
-                   else if(conj.equalsIgnoreCase("or")){ //Containing either term
+                   else if(conj.equalsIgnoreCase("or")){ //MULTIPLE SEARCH TERMS CONTAINING "or", RETURN ALL IMAGES W/ AT LEAST ONE ELEMENT
                        if(entry.getValue().contains(userChoice1)||(entry.getValue().contains(userChoice2))){
                         System.out.println("\t\t" + entry.getKey());
                         }                    
