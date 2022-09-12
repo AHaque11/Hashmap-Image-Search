@@ -1,9 +1,4 @@
 
-// Arefa Haque
-// CIS 2352
-// Spring 2022
-// Prof. John P. Baugh
-
 package com.mycompany.project3;
 import java.util.Map;
 import java.util.HashMap;
