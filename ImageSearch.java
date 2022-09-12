@@ -16,23 +16,23 @@ public class ImageSearch {
         
         HashMap<String, List<String>> images = new HashMap<>();
        
-        // READ FILE INTO HASHMAP
+            // READ FILE INTO HASHMAP
         try{
             Scanner inFile = new Scanner(new File("image_info.txt"));
             
             while(inFile.hasNextLine()){ 
                 String fileLine = inFile.nextLine();
-                Scanner lineReader = new Scanner(fileLine); //READ EACH LINE SEPARATELY
+                Scanner lineReader = new Scanner(fileLine);     //READ EACH LINE SEPARATELY
                 
                 while(lineReader.hasNext()){        
-                String key = lineReader.next(); //READ FIRST WORD INTO "key" VARIABLE
+                String key = lineReader.next();     //READ FIRST WORD INTO "key" VARIABLE
                 List<String> values = new ArrayList<>();
                 
-                    while(lineReader.hasNext()){ //READ THE REST OF THE LINE INTO A LIST                         
+                    while(lineReader.hasNext()){    //READ THE REST OF THE LINE INTO A LIST                         
                         values.add(lineReader.next());
                     }
                 
-                images.put(key, values); //ADD THE NEW KEY AND ITS CORRESPONDING VALUES TO THE MAP
+                images.put(key, values);    //ADD THE NEW KEY AND ITS CORRESPONDING VALUES TO THE MAP
 
                 }
                  
@@ -48,7 +48,7 @@ public class ImageSearch {
         }
         
                 
-        // USER INTERACTION AND SEARCH
+            // USER INTERACTION AND SEARCH
         try{    
             Scanner keyboard = new Scanner(System.in);
                      
@@ -62,7 +62,7 @@ public class ImageSearch {
                 String input = keyboard.nextLine();
                 Scanner inputReader = new Scanner(input);
                 
-                while(inputReader.hasNext()){ //Read EACH WORD AS A SEPARATE STRING
+                while(inputReader.hasNext()){   //READ EACH WORD AS A SEPARATE STRING
                     userChoice1 = inputReader.next().toLowerCase();
                     
                     while(inputReader.hasNext()){
@@ -78,17 +78,17 @@ public class ImageSearch {
                
                for(Map.Entry<String, List<String>> entry: images.entrySet()){
                    
-                   if(userChoice2.equals(" ")){ //USER ENTERS ONE SEARCH TERMS
+                   if(userChoice2.equals(" ")){     //USER ENTERS ONE SEARCH TERM
                         if(entry.getValue().contains(userChoice1)){
                         System.out.println("\t\t" + entry.getKey());
                         }  
                    }
-                   else if(conj.equalsIgnoreCase("and")){ //MULTIPLE SEARCH TERMS CONTAINING "and", RETURN ALL IMAGES W/ BOTH ELEMENTS
+                   else if(conj.equalsIgnoreCase("and")){   //MULTIPLE SEARCH TERMS CONTAINING "and", RETURN ALL IMAGES W/ BOTH ELEMENTS
                        if(entry.getValue().contains(userChoice1)&&(entry.getValue().contains(userChoice2))){
                         System.out.println("\t\t" + entry.getKey());
                         }  
                    }
-                   else if(conj.equalsIgnoreCase("or")){ //MULTIPLE SEARCH TERMS CONTAINING "or", RETURN ALL IMAGES W/ AT LEAST ONE ELEMENT
+                   else if(conj.equalsIgnoreCase("or")){    //MULTIPLE SEARCH TERMS CONTAINING "or", RETURN ALL IMAGES W/ AT LEAST ONE ELEMENT
                        if(entry.getValue().contains(userChoice1)||(entry.getValue().contains(userChoice2))){
                         System.out.println("\t\t" + entry.getKey());
                         }                    
